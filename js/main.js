@@ -333,18 +333,41 @@
 
     };
 
-
+  
     /* Contact Form
      * ------------------------------------------------------ */
-    var ssContactForm = function() {
+     var ssContactForm = function() {
 
-        /* local validation */
-	    $('#contactForm').validate({
+	/* local validation */
+	$('#contactForm').validate({
         
             /* submit via ajax */
-            submitHandler: function(form) {
+  	          submitHandler: function(form) {
+    			var name = $('#contactName').val();
+			var email = $('#contactEmail').val();
+			var subj = $('#contactSubject').val();
+			var body = $('#contactMessage').val();
+			var sLoader = $('.submit-loader');
+			sLoader.slideDown("slow");
+			window.location = "mailto:abhijit.suresh.colorado.edu?subject="+name+"_"+subj+"&body="+body;
+			$('.message-warning').fadeOut();
+			//$('#contactForm').fadeOut();
+			$('.message-success').fadeIn();
+			sLoader.slideUp("slow"); 
+		}
+	});
+	
+     }
+ 
+ //   var ssContactForm = function() {
+
+        /* local validation */
+//	    $('#contactForm').validate({
+        
+            /* submit via ajax */
+  //          submitHandler: function(form) {
     
-                var sLoader = $('.submit-loader');
+  /*              var sLoader = $('.submit-loader');
     
                 $.ajax({
     
@@ -386,7 +409,7 @@
     
         });
     };
-
+   */
 
    /* Back to Top
     * ------------------------------------------------------ */
